@@ -30,17 +30,15 @@ Candidates.pop(0)
 
 # THE TOTAL NUMBER OF VOTES CAST
 VotesTotal = len(Candidates)
-print(VotesTotal)
 
 # A COMPLETE LIST OF CANDIDATES WHO RECEIVED VOTES
 list_set = set(Candidates) 
 CandidatesUnique = list(list_set)   # CONVERT SET TO THE LIST 
-print(CandidatesUnique)
 CandidatesUniqueTotal = len(CandidatesUnique)
 
 # THE PERCENTAGE OF VOTES EACH CANDIDATE WON
-for candidate in Candidates:
-    if candidate == CandidatesUnique[0]:
+# for candidate in CandidatesUnique:
+#     if candidate
 
 
 # THE TOTAL NUMBER OF VOTES EACH CANDIDATE WON
@@ -50,23 +48,23 @@ for candidate in Candidates:
 
 
 # YOUR FINAL SCRIPT SHOULD BOTH PRINT THE ANALYSIS TO THE TERMINAL AND EXPORT A TEXT FILE WITH THE RESULTS
-# output_file = os.path.join("analysis", "PyPollAnalysis.txt")
-# with open(output_file, "w", newline="") as datafile:
-#     writer = csv.writer(datafile)
-#     writer.writerow(["Election Results"])
-#     writer.writerow(["-------------------------"])
-#     writer.writerow([f"Total Votes: {VotesTotal}"])
-#     writer.writerow(["-------------------------"])
+output_file = os.path.join("analysis", "PyPollAnalysis.txt")
+with open(output_file, "w", newline="") as datafile:
+    writer = csv.writer(datafile)
+    writer.writerow(["Election Results"])
+    writer.writerow(["-------------------------"])
+    writer.writerow([f"Total Votes: {VotesTotal}"])
+    writer.writerow(["-------------------------"])
 #     for row in writer:
 #         writer.writerow([f"Greatest Increase in Profits: {MaxIncreaseDate} (${MaxIncrease})"])
 #     writer.writerow(["-------------------------"])
 #     writer.writerow([f"Winner: {NetPL}"])
 #     writer.writerow(["-------------------------"])
 
-# txtpath = "analysis/PyPollAnalysis.txt"
-# with open(txtpath, 'r') as txtfile:
-#     lines = txtfile.read()
-#     print(lines)
+txtpath = "analysis/PyPollAnalysis.txt"
+with open(txtpath, 'r') as txtfile:
+    lines = txtfile.read()
+    print(lines)
 
 # ------------------------------------------------------------------------------------
 # LIST OF REFERENCES:

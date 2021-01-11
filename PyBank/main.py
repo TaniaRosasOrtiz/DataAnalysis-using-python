@@ -5,7 +5,7 @@
 # DATE:             JAN 9, 2021
 # AVAILABILITY:     tdm-mxc-data-pt-12-2020-u-c\Week 3 - Python\homework\PyBank
 # DATA INPUT:       Resources\budget_data.csv
-# DATA OUTPUT:      analysis/PyBankAnalysis.txt
+# DATA OUTPUT:      analysis\PyBankAnalysis.txt
 # ------------------------------------------------------------------------------------
 
 # DEPENDENCIES
