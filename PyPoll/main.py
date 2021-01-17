@@ -11,6 +11,7 @@
 # DEPENDENCIES
 import os
 import csv
+import operator
 
 # ASIGN FILE
 file = os.path.join("Resources", "election_data.csv")
@@ -18,6 +19,9 @@ file = os.path.join("Resources", "election_data.csv")
 # CREATE LISTS
 Candidates = []
 CandidatesUnique = []
+votes = []
+results = {}
+results_sorted = {}
 
 # READ THE FILE AND POPULATE LISTS
 with open(file) as csvfile:
@@ -34,18 +38,19 @@ VotesTotal = len(Candidates)
 # A COMPLETE LIST OF CANDIDATES WHO RECEIVED VOTES
 list_set = set(Candidates) 
 CandidatesUnique = list(list_set)   # CONVERT SET TO THE LIST 
-CandidatesUniqueTotal = len(CandidatesUnique)
 
 # THE PERCENTAGE OF VOTES EACH CANDIDATE WON
-# for candidate in CandidatesUnique:
-#     if candidate
-
+for candidate in CandidatesUnique:
+    votes.append(Candidates.count(candidate))
 
 # THE TOTAL NUMBER OF VOTES EACH CANDIDATE WON
+zipresults = zip(CandidatesUnique, votes)
+results = dict(zipresults)
 
+results_sorted = dict( sorted(results.items(), key=operator.itemgetter(1), reverse=True))
 
 # THE WINNER OF THE ELECTION BASED ON POPULAR VOTE
-
+winner = max(results, key=results.get)
 
 # YOUR FINAL SCRIPT SHOULD BOTH PRINT THE ANALYSIS TO THE TERMINAL AND EXPORT A TEXT FILE WITH THE RESULTS
 output_file = os.path.join("analysis", "PyPollAnalysis.txt")
@@ -55,11 +60,12 @@ with open(output_file, "w", newline="") as datafile:
     writer.writerow(["-------------------------"])
     writer.writerow([f"Total Votes: {VotesTotal}"])
     writer.writerow(["-------------------------"])
-#     for row in writer:
-#         writer.writerow([f"Greatest Increase in Profits: {MaxIncreaseDate} (${MaxIncrease})"])
-#     writer.writerow(["-------------------------"])
-#     writer.writerow([f"Winner: {NetPL}"])
-#     writer.writerow(["-------------------------"])
+    for c, v in results_sorted.items():
+        percvote = "{:.3f}".format(round((v/VotesTotal)*100))
+        writer.writerow([f"{c}: {percvote}% ({v})"])
+    writer.writerow(["-------------------------"])
+    writer.writerow([f"Winner: {winner}"])
+    writer.writerow(["-------------------------"])
 
 txtpath = "analysis/PyPollAnalysis.txt"
 with open(txtpath, 'r') as txtfile:
@@ -68,7 +74,5 @@ with open(txtpath, 'r') as txtfile:
 
 # ------------------------------------------------------------------------------------
 # LIST OF REFERENCES:
-# 
-# REFERENCE (1): @Striver (n.d.) "Python | Get unique values from a list". Python. Geeks for Geeks. Retrieve on Jan 10, 2021 from https://www.geeksforgeeks.org/python-get-unique-values-list/
 #
 # ------------------------------------------------------------------------------------
